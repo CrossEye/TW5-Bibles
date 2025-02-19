@@ -1,0 +1,20 @@
+{
+  "name": "tw5-bibles",
+  "version": "0.1.0",
+  "description": "Presenting Tiddlywiki versions of translations of the Christian Bible",
+  "keywords": [
+    "Bible",
+    "Tiddlywiki"
+  ],
+  "license": "MIT",
+  "author": "Scott Sauyet",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "fracturedjsonjs": "^4.0.2",
+    "ramda": "^0.30.1"
+  }
+}
