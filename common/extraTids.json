@@ -1,0 +1,78 @@
+[
+    {
+        "title": "${title}",
+        "tags": "TableOfContents",
+        "type": "text/vnd.tiddlywiki",
+        "text": "<div class=\"tc-table-of-contents\" style=\"column-width:12em;\">\n\n<<toc-selective-expandable \"Book\" \"nsort[seq]\" >>\n\n</div>\n"
+    },
+    {
+        "title": "Book",
+        "caption": "Books",
+        "tags": "TableOfContents",
+        "type": ""
+    },
+    {
+        "title": "TableOfContents",
+        "caption": "Contents",
+        "list": "[[${title}]] Book",
+        "list-before": "$:/core/ui/SideBar/Open",
+        "tags": "$:/tags/SideBar",
+        "type": "text/vnd.tiddlywiki",
+        "text": "<div class=\"tc-table-of-contents\">\n\n<<toc-selective-expandable \"TableOfContents\" \"nsort[seq]\" >>\n\n</div>\n"
+    },
+    {
+        "title": "$:/config/DefaultSidebarTab",
+        "type": "text/vnd.tiddlywiki",
+        "text": "TableOfContents"
+    },
+    {
+        "title": "$:/DefaultTiddlers",
+        "text": "[[${title}]]\n"
+    },
+    {
+        "title": "$:/SiteSubtitle"
+    },
+    {
+        "title": "$:/SiteTitle",
+        "text": "${title}"
+    },
+    {
+        "text": "\\procedure open-verse()\n<$action-navigate $to=<<dom-title>>/>\n\\end\n",
+        "tags": "$:/tags/Global",
+        "title": "$:/_/bible/procedures/open-verse"
+    },
+    {
+        "text": ".chapter.poetry {\n  p {margin: .1em 1em; width: 25em; text-indent: 1.25em;}\n  p.stanza {margin: 2em 0 1em; font-weight: 500;}\n  p.inscription {background: #f0f0f0; padding: .25em; text-indent: .25em;}\n}\n.verse {padding-right: .3em;}\n.verse:hover {\n  background: #ffd;\n  cursor: pointer;\n}\n\n",
+        "tags": "$:/tags/Stylesheet",
+        "title": "$:/_/bible/styles/basic",
+        "type": "text/css"
+    },
+    {
+        "text": "<% if [<currentTiddler>tag[Book]] %>\n<$list filter=\"[tag[Chapter]] :filter[book<..currentTiddler>] +[nsort[seq]]\">\n<$let header={{{ [<currentTiddler>book[Psalms]then[Psalm]else[Chapter]] }}} >\n<h2><$link><<header>> {{!!chapter}}</$link></h2>\n<$transclude $tiddler=\"$:/_/bible/templates/chapter\" />\n</$let>\n</$list>\n<% endif %>",
+        "tags": "$:/tags/ViewTemplate",
+        "title": "$:/_/bible/templates/book",
+        "type": "text/vnd.tiddlywiki"
+    },
+    {
+        "text": "\\whitespace trim\n<% if [<currentTiddler>tag[Chapter]] %>\n<$let template={{{[<currentTiddler>book[Psalms]then[$:/_/bible/templates/psalms]else[$:/_/bible/templates/most-books]] }}} >\n<% if [book[Psalms]psalm-section{!!psalm-section}first[]chapter{!!chapter}] %>\n<h3>{{!!psalm-section}}</h3>\n<% endif %>\n\n<$transclude $tiddler=<<template>> />\n</$let>\n<% endif %>",
+        "title": "$:/_/bible/templates/chapter",
+        "tags": "$:/tags/ViewTemplate"
+    },
+    {
+        "text": "<$eventcatcher selector=\"span.verse\" $click=<<open-verse>>  tag=\"div\" class=\"chapter\" >\n<$set name=verses filter=\"[<currentTiddler>tagging[]tag[Verse]]\">\n<$list filter=\"[enlist<verses>get[para]unique[]nsort[]]\" variable=\"thisPara\">\n  <p><$list filter=\"[enlist<verses>para<thisPara>sort[seq]]\">\n    <span class=\"verse\" title={{!!title}}>{{!!text}}</span>\n  </$list></p>\n</$list>\n</$set>\n</$eventcatcher>\n",
+        "title": "$:/_/bible/templates/most-books",
+        "tags": "",
+        "code-body": "yes"
+    },
+    {
+        "text": "<$eventcatcher selector=\"span.verse\" $click=<<open-verse>>  tag=\"div\" class=\"chapter poetry\">\n<% if [<currentTiddler>has[inscription]] %>\n<p class=\"inscription\">{{!!inscription}}</p><br/>\n<% endif %>\n<$list filter=\"[<currentTiddler>tagging[]tag[Verse]nsort[seq]]\">\n<% if [<currentTiddler>has[preface]]%>\n  <p class=\"stanza\">{{!!preface}}</p>\n<% endif %>\n  <p>\n    <span class=\"verse\" title={{!!title}}>{{!!text}}</span>\n  </p>\n</$list>\n</$eventcatcher>\n",
+        "title": "$:/_/bible/templates/psalms",
+        "tags": "",
+        "code-body": "yes"
+    },
+    {
+        "text": "[[${title}]] Book TableOfContents $:/config/DefaultSidebarTab $:/DefaultTiddlers  $:/SiteSubtitle $:/SiteTitle [prefix[$:/_/bible]] $:/_/my/filters/export ",
+        "title": "$:/_/my/filters/export",
+        "tags": ""
+    }
+]

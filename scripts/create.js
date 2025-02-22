@@ -30,9 +30,7 @@ const toNested = pipe(
   map(([title, chapters]) => ({title, chapters}))
 )
 
-const nested = toNested(verses)
-
-const enhanced = nested.map(({title, chapters, ...rest}) => ({
+const enhanced = (nested) => nested.map(({title, chapters, ...rest}) => ({
   title,
   ...rest,
   chapters: chapters.map(({title, ...rest}) => ({
@@ -48,6 +46,6 @@ const enhanced = nested.map(({title, chapters, ...rest}) => ({
   }
 }))
 
-const textFromObj = formatter.Serialize(enhanced);
+const textFromObj = formatter.Serialize(enhanced(toNested(verses)));
 
 console.log(textFromObj)
