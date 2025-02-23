@@ -59,7 +59,7 @@
         "tags": "$:/tags/ViewTemplate"
     },
     {
-        "text": "<$eventcatcher selector=\"span.verse\" $click=<<open-verse>>  tag=\"div\" class=\"chapter\" >\n<$set name=verses filter=\"[<currentTiddler>tagging[]tag[Verse]]\">\n<$list filter=\"[enlist<verses>get[para]unique[]nsort[]]\" variable=\"thisPara\">\n  <p><$list filter=\"[enlist<verses>para<thisPara>sort[seq]]\">\n    <span class=\"verse\" title={{!!title}}>{{!!text}}</span>\n  </$list></p>\n</$list>\n</$set>\n</$eventcatcher>\n",
+        "text": "<$eventcatcher selector=\"span.verse\" $click=<<open-verse>>  tag=\"div\" class=\"chapter\" >\n<$set name=verses filter=\"[<currentTiddler>tagging[]tag[Verse]]\">\n<$list filter=\"[enlist<verses>get[para]unique[]nsort[]]\" variable=\"thisPara\">\n  <p><$list filter=\"[enlist<verses>para<thisPara>nsort[seq]]\">\n    <span class=\"verse\" title={{!!title}}>{{!!text}}</span>\n  </$list></p>\n</$list>\n</$set>\n</$eventcatcher>\n",
         "title": "$:/_/bible/templates/most-books",
         "tags": "",
         "code-body": "yes"

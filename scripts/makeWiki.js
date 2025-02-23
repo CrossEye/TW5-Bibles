@@ -1,4 +1,4 @@
-const {mkdir, writeFile, rm} = require('fs/promises')
+const {mkdir, writeFile} = require('fs/promises')
 const {join, resolve} = require('node:path')
 const format = require('./format')
 const nestVerses = require('./nestVerses')
