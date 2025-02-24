@@ -36,7 +36,7 @@ module.exports = (version) => {
 const makeScript = (config, tiddlers) => {
   const extras = extraTids.map(update(config))
 
-  return readFile('./common/empty.html', 'utf8')
+  return readFile('./common/empty.html.tmpl', 'utf8')
     .then((empty) => empty.replace(
       '<!--~~ Replace Me ~~-->', 
       ['', ...([...extras, ...tiddlers].map(JSON.stringify))].join(',\n')

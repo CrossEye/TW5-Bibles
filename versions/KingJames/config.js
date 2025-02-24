@@ -9,10 +9,11 @@ const verses = require('./kjv.json').verses.map(cleanVerse(inscriptions))
 
 module.exports = () => ({
   title: 'King James Bible',
-  language: require(`../../common/languages/en.json`),
-  metadata: require('./kjv.json').metadata,
   verses,
+  metadata: require('./kjv.json').metadata,
+  language: require(`../../common/languages/en.json`),
   paragraphs: require(`../../common/paragraphs.json`),
+  sections: require(`../../common/sections.json`),
   inscriptions,
-  sections: require(`../../common/sections.json`)
+  stanzas: require(`../../common/stanzas.json`)
 })

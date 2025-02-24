@@ -1,6 +1,6 @@
 {
   "name": "tw5-bibles",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Presenting Tiddlywiki versions of translations of the Christian Bible",
   "keywords": [
     "Bible",
@@ -11,7 +11,8 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node index all"
   },
   "dependencies": {
     "fracturedjsonjs": "^4.0.2",

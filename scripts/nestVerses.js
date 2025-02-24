@@ -19,7 +19,7 @@ const toNested = pipe(
   map(([title, chapters]) => ({title, chapters}))
 )
 
-const enhanced = ({inscriptions, sections, paragraphs}, nested) => nested.map(({title, chapters, ...rest}) => ({
+const enhanced = ({inscriptions, sections, paragraphs, stanzas}, nested) => nested.map(({title, chapters, ...rest}) => ({
   title,
   ...rest,
   chapters: chapters.map(({title, ...rest}) => ({
@@ -27,7 +27,8 @@ const enhanced = ({inscriptions, sections, paragraphs}, nested) => nested.map(({
     ...rest,
     meta: {
       paragraphs: paragraphs[title],
-      ...(inscriptions[title] ? {inscription: inscriptions[title]} : {})
+      ...(inscriptions[title] ? {inscription: inscriptions[title]} : {}),
+      ...(stanzas[title] ? {stanzas: stanzas[title]} : {})
     }
   })),
   meta: {

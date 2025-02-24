@@ -12,10 +12,11 @@ const {inscriptions, verses} = extractInscriptions(require('./asv.json').verses)
 
 module.exports = () => ({
   title: 'American Standard Bible',
-  language: require(`../../common/languages/en.json`),
-  metadata: require('./asv.json').metadata,
   verses,
+  metadata: require('./asv.json').metadata,
+  language: require(`../../common/languages/en.json`),
   paragraphs: require(`../../common/paragraphs.json`),
+  sections: require(`../../common/sections.json`),
   inscriptions,
-  sections: require(`../../common/sections.json`)
+  stanzas: require(`../../common/stanzas.json`)
 })
