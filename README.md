@@ -222,14 +222,13 @@ But in its full glory, the config object will look something like this:
 The remaining properties are specific to Psalms, which have substantially
 different formatting needs from the other chapters.
 
+  - **`sections`**: The book of Psalms has five sections, which usually have fairly
+    subtle text annotations.  This lists them.
   - **`inscriptions`**: A majority of the Psalms have some inscription above
     them.
-
   - **`stanzas`**: Psalm 119 has a specific breakdown into stanzas named for the
     Hebrew letters.
 
-  - **`sections`**: The book of Psalms has five sections, which usually have fairly
-    subtle text annotations.  This lists them.
 
 
 TODO
