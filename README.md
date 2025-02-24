@@ -224,8 +224,10 @@ different formatting needs from the other chapters.
 
   - **`sections`**: The book of Psalms has five sections, which usually have fairly
     subtle text annotations.  This lists them.
+
   - **`inscriptions`**: A majority of the Psalms have some inscription above
     them.
+    
   - **`stanzas`**: Psalm 119 has a specific breakdown into stanzas named for the
     Hebrew letters.
 
