@@ -19,20 +19,25 @@ const toNested = pipe(
   map(([title, chapters]) => ({title, chapters}))
 )
 
-const enhanced = ({inscriptions, sections, paragraphs, stanzas}, nested) => nested.map(({title, chapters, ...rest}) => ({
-  title,
-  ...rest,
-  chapters: chapters.map(({title, ...rest}) => ({
+const enhanced = ({inscriptions, sections, paragraphs, stanzas, language}, nested, books = invert(language.books)) => 
+  nested.map(({title, chapters, ...rest}) => ({
     title,
     ...rest,
+    chapters: chapters.map(({title, key = getKey(books)(title), ...rest}) => ({
+      title,
+      ...rest,
+      meta: {
+        paragraphs: paragraphs[key],
+        ...(inscriptions[title] ? {inscription: inscriptions[title]} : {}),
+        ...(stanzas[key] ? {stanzas: stanzas[key]} : {})
+      }
+    })),
     meta: {
-      paragraphs: paragraphs[title],
-      ...(inscriptions[title] ? {inscription: inscriptions[title]} : {}),
-      ...(stanzas[title] ? {stanzas: stanzas[title]} : {})
+      ...(sections[books[title]] ? {sections: sections[books[title]]} : {})
     }
-  })),
-  meta: {
-    ...(sections[title] ? {sections: sections[title]} : {})
-  }
-}))
+  }))
+
+  const invert = (o) => Object.fromEntries(Object.entries(o).map(([k, v]) => [v, k]))
+
+  const getKey = (books) => (title, [_, book, location] = title.match(/(.+) (\d+)/)) =>  `${books[book]} ${location}`
 

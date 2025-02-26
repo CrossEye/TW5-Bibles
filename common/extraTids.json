@@ -85,7 +85,7 @@
   },
   {
     "created": "20240713000613629",
-    "text": "<% if [<currentTiddler>tag[${Book}]] %>\n<$list filter=\"[tag[${Chapter}]] :filter[book<..currentTiddler>] +[nsort[seq]]\">\n<$let header={{{ [<currentTiddler>book[Psalms]then[Psalm]else[${Chapter}]] }}} >\n<h2><$link><<header>> {{!!chapter}}</$link></h2>\n<$transclude $tiddler=\"$:/_/bible/templates/chapter\" />\n</$let>\n</$list>\n<% endif %>",
+    "text": "<% if [<currentTiddler>tag[${Book}]] %>\n<$list filter=\"[tag[${Chapter}]] :filter[book<..currentTiddler>] +[nsort[seq]]\">\n<$let header={{{ [<currentTiddler>book[${Psalms}]then[${Psalms}]else[${Chapter}]] }}} >\n<h2><$link><<header>> {{!!chapter}}</$link></h2>\n<$transclude $tiddler=\"$:/_/bible/templates/chapter\" />\n</$let>\n</$list>\n<% endif %>",
     "tags": "$:/tags/ViewTemplate",
     "title": "$:/_/bible/templates/book",
     "modified": "20240717130650760",
@@ -95,7 +95,7 @@
   },
   {
     "created": "20240712210440800",
-    "text": "\\whitespace trim\n<% if [<currentTiddler>tag[${Chapter}]] %>\n<$let template={{{[<currentTiddler>book[Psalms]then[$:/_/bible/templates/psalms]else[$:/_/bible/templates/most-books]] }}} >\n<% if [book[Psalms]psalm-section{!!psalm-section}first[]chapter{!!chapter}] %>\n<h3>{{!!psalm-section}}</h3>\n<% endif %>\n\n<$transclude $tiddler=<<template>> />\n</$let>\n<% endif %>",
+    "text": "\\whitespace trim\n<% if [<currentTiddler>tag[${Chapter}]] %>\n<$let template={{{[<currentTiddler>book[${Psalms}]then[$:/_/bible/templates/psalms]else[$:/_/bible/templates/most-books]] }}} >\n<% if [book[${Psalms}]psalm-section{!!psalm-section}first[]chapter{!!chapter}] %>\n<h3>{{!!psalm-section}}</h3>\n<% endif %>\n\n<$transclude $tiddler=<<template>> />\n</$let>\n<% endif %>",
     "title": "$:/_/bible/templates/chapter",
     "modified": "20240718155825410",
     "tags": "$:/tags/ViewTemplate",

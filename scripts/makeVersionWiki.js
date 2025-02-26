@@ -10,7 +10,7 @@ module.exports = (version) => {
   const config = require(`../versions/${version}/config`)()
   
   const enhanced = nestVerses(config)
-  const tiddlers = makeTiddlers(enhanced)
+  const tiddlers = makeTiddlers(config)(enhanced)
   
   const outputDir = resolve(join('.', 'docs', version)),
         rawFile = join(outputDir, `raw.json`),
@@ -30,6 +30,7 @@ module.exports = (version) => {
     .then((wikiContent) => writeFile(wikiFile, wikiContent))
     .then(() => console.log(`Wrote "${wikiFile}"`))
     .then(() => console.log(`\nCompleted writing "${version}"`))
+    .then(() => console.log(`--------------------\n`))
     .catch(console.warn)
 }
 
@@ -44,7 +45,7 @@ const makeScript = (config, tiddlers) => {
   )
 }
 
-const update = ({title, language: {Book, Books, Chapter, Verse}}) => (tiddler) => 
+const update = ({title, language: {Book, Books, Chapter, Verse, books: {Psalms}}}) => (tiddler) => 
   Object.fromEntries(Object.entries(tiddler).map(([k, v]) => [
     k, 
     v.replaceAll('${title}', title)
@@ -52,4 +53,5 @@ const update = ({title, language: {Book, Books, Chapter, Verse}}) => (tiddler) =
       .replaceAll('${Books}', Books)
       .replaceAll('${Chapter}', Chapter)
       .replaceAll('${Verse}', Verse)
+      .replaceAll('${Psalms}', Psalms)
   ]))

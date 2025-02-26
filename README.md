@@ -237,11 +237,11 @@ TODO
 ----
 
   - [ ] Update the `inscriptions` for the various translations.
-  - [ ] Finish translation tools (75% compete?)
+  - [X] Finish translation tools (95% compete?)
   - [ ] Add metadata to the output (perhaps as fields in an About page?)
   - [ ] Allow alternate view templates per version
   - [ ] Simplify config construction with defaults
-
+ 
 
   [asv]: https://crosseye.github.io/TW5-Bibles/AmericanStandard
   [bss]: https://www.biblesupersearch.com/bible-downloads/
