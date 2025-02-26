@@ -13,4 +13,5 @@ module.exports = () => ({
   sections: require(`../../common/sections.json`),
   inscriptions: require(`../../common/inscriptions.json`),
   stanzas: require(`../../common/stanzas.json`),
+  languageTiddlers: []
 })

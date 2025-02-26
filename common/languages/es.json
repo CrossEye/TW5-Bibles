@@ -3,6 +3,8 @@
   "Book": "Libro",
   "Books": "Libros",
   "Verse": "Versículo",
+  "Contents": "Contenido",
+  "TableOfContents": "TablaDeContenido",
 
   "books": {
     "Genesis": "Génesis",

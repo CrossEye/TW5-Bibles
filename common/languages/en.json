@@ -3,6 +3,8 @@
   "Book": "Book",
   "Books": "Books",
   "Verse": "Verse",
+  "Contents": "Contents",
+  "TableOfContents": "TableOfContents",
 
   "books": {
     "Genesis": "Genesis",

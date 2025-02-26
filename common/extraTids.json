@@ -4,7 +4,7 @@
     "created": "20240712234719300",
     "modified": "20240713001000486",
     "revision": "1",
-    "tags": "TableOfContents",
+    "tags": "${TableOfContents}",
     "type": "text/vnd.tiddlywiki",
     "text": "<div class=\"tc-table-of-contents\" style=\"column-width:12em;\">\n\n<<toc-selective-expandable \"${Book}\" \"nsort[seq]\" >>\n\n</div>\n",
     "bag": "default"
@@ -14,14 +14,14 @@
     "caption": "${Books}",
     "created": "20240712213350136",
     "modified": "20240712213855741",
-    "tags": "TableOfContents",
+    "tags": "${TableOfContents}",
     "type": "",
     "revision": "1",
     "bag": "default"
   },
   {
-    "title": "TableOfContents",
-    "caption": "Contents",
+    "title": "${TableOfContents}",
+    "caption": "${Contents}",
     "created": "20240227233655732",
     "list": "[[${title}]] [[${Book}]]",
     "list-before": "$:/core/ui/SideBar/Open",
@@ -29,7 +29,7 @@
     "revision": "1",
     "tags": "$:/tags/SideBar",
     "type": "text/vnd.tiddlywiki",
-    "text": "<div class=\"tc-table-of-contents\">\n\n<<toc-selective-expandable \"TableOfContents\" \"nsort[seq]\" >>\n\n</div>\n",
+    "text": "<div class=\"tc-table-of-contents\">\n\n<<toc-selective-expandable \"${TableOfContents}\" \"nsort[seq]\" >>\n\n</div>\n",
     "bag": "default"
   },
   {
@@ -38,7 +38,7 @@
     "modified": "20240227233655980",
     "revision": "1",
     "type": "text/vnd.tiddlywiki",
-    "text": "TableOfContents",
+    "text": "${TableOfContents}",
     "bag": "default"
   },
   {
@@ -124,7 +124,7 @@
   },
   {
     "created": "20240714203932370",
-    "text": "[[${title}]] ${Book} TableOfContents $:/config/DefaultSidebarTab $:/DefaultTiddlers  $:/SiteSubtitle $:/SiteTitle [prefix[$:/_/bible]] $:/_/my/filters/export ",
+    "text": "[[${title}]] ${Book} ${TableOfContents} $:/config/DefaultSidebarTab $:/DefaultTiddlers  $:/SiteSubtitle $:/SiteTitle [prefix[$:/_/bible]] $:/_/my/filters/export ",
     "title": "$:/_/my/filters/export",
     "modified": "20240724201237717",
     "tags": "",

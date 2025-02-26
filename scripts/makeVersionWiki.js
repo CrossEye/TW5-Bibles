@@ -40,12 +40,12 @@ const makeScript = (config, tiddlers) => {
   return readFile('./common/empty.html.tmpl', 'utf8')
     .then((empty) => empty.replace(
       '<!--~~ Replace Me ~~-->', 
-      ['', ...([...extras, ...tiddlers].map(JSON.stringify))].join(',\n')
+      ['', ...([...extras, ...tiddlers, ...(config.languageTiddlers || [])].map(JSON.stringify))].join(',\n')
     )
   )
 }
 
-const update = ({title, language: {Book, Books, Chapter, Verse, books: {Psalms}}}) => (tiddler) => 
+const update = ({title, language: {Book, Books, Chapter, Verse, Contents, TableOfContents, books: {Psalms}}}) => (tiddler) => 
   Object.fromEntries(Object.entries(tiddler).map(([k, v]) => [
     k, 
     v.replaceAll('${title}', title)
@@ -54,4 +54,6 @@ const update = ({title, language: {Book, Books, Chapter, Verse, books: {Psalms}}
       .replaceAll('${Chapter}', Chapter)
       .replaceAll('${Verse}', Verse)
       .replaceAll('${Psalms}', Psalms)
+      .replaceAll('${Contents}', Contents)
+      .replaceAll('${TableOfContents}', TableOfContents)
   ]))
