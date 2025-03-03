@@ -28,7 +28,7 @@ const convertChapter = (config) => (book) => ({title, verses, meta}, i) => [
 const getPsalmSection = (config) => (i, meta) => meta.sections.find(({chapters}) => chapters.includes(i)).title
 
 convertVerse = (config) => (book, chapter, meta) => ({title, text}, i) => [
-  {title, tags: `${config.language.Verse} ${wrap(chapter)}`, book, chapter, verse: String(i + 1), text, para: getPara(config)(i + 1, meta), ...getPreface(config)(i + 1, meta)}
+  {title, tags: `${config.language.Verse} ${wrap(chapter)}`, book, chapter: chapter.split(' ').at(-1), verse: String(i + 1), text, para: getPara(config)(i + 1, meta), ...getPreface(config)(i + 1, meta)}
 ]
 
 const getPreface = (config) => (i, meta, 

@@ -5,6 +5,8 @@ const cleanVerse = (inscriptions) => (verse) => ({
   text: verse.text.replace('\u00b6', '')
         .replace(inscriptions[`${verse.book_name} ${verse.chapter}`], '').trim()
         .replace(/\[([^\]]*)\]/g, '//$1//')
+        // .replace(/‹/gu, '"')
+        // .replace(/›/gu, '"')
 })
 
 const verses = require('./kjv.json').verses.map(cleanVerse(inscriptions))
