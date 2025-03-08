@@ -3,6 +3,7 @@ const {join, resolve} = require('node:path')
 const format = require('./format')
 const nestVerses = require('./nestVerses')
 const makeTiddlers = require('./makeTiddlers')
+const {pathEntries} = require('./util')
 
 const extraTids = require('./../common/extraTids.json')
 
@@ -20,7 +21,7 @@ module.exports = (version) => {
   
   return mkdir(outputDir, {recursive: true})
     .then(() => writeFile(rawFile, format({metadata: config.metadata, verses: config.verses})))
-    .then(() => console.log(`\n--------------------`))
+    .then(() => console.log(`\n---------------------------------`))
     .then(() => console.log(`Wrote "${rawFile}"`))
     .then(() => writeFile(enhancedFile, format(enhanced)))
     .then(() => console.log(`Wrote "${enhancedFile}"`))
@@ -30,7 +31,7 @@ module.exports = (version) => {
     .then((wikiContent) => writeFile(wikiFile, wikiContent))
     .then(() => console.log(`Wrote "${wikiFile}"`))
     .then(() => console.log(`\nCompleted writing "${version}"`))
-    .then(() => console.log(`--------------------\n`))
+    .then(() => console.log(`--------------------------------\n`))
     .catch(console.warn)
 }
 
@@ -40,10 +41,23 @@ const makeScript = (config, tiddlers) => {
   return readFile('./common/empty.html.tmpl', 'utf8')
     .then((empty) => empty.replace(
       '<!--~~ Replace Me ~~-->', 
-      ['', ...([...extras, ...tiddlers, ...(config.languageTiddlers || [])].map(JSON.stringify))].join(',\n')
+      ['', ...([
+        ...extras, 
+        ...(config.languageTiddlers || []),
+        ...makeLangTiddlers({title: config.title, ...config.language}),
+        ...tiddlers, 
+      ].map(JSON.stringify))].join(',\n')
     )
   )
 }
+
+const makeLangTiddlers = (language) => 
+  pathEntries(language).filter(([k, v]) => typeof v === "string")
+  .map(([k, v]) => ({
+    title: `$:/language/plugins/crosseye/bible-wiki/${k.join('/')}`,
+    tags: '',
+    text: v
+  }))
 
 const update = ({title, language: {Book, Books, Chapter, Verse, Contents, TableOfContents, books: {Psalms}}}) => (tiddler) => 
   Object.fromEntries(Object.entries(tiddler).map(([k, v]) => [
