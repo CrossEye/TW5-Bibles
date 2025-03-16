@@ -1,0 +1,44 @@
+title: $:/_/bible-wiki/extension/sections/language/en-GB
+tags: $:/_/bible-wiki/extension/sections/language
+type: application/json
+language: en-GB
+caption: English
+installed: no
+
+{
+  "title": "Section",
+  "tags": "TableOfContents",
+  "caption": "Sections",
+  "_children": [
+    {
+      "title": "New Testament",
+      "_children": [
+        {
+          "title": "Gospel",
+          "caption": "Gospels",
+          "_children": ["Matthew", "Mark", "Luke", "John"]
+        },
+        {
+          "title": "History (NT)",
+          "caption": "History",
+          "_children": ["Acts"]
+        },
+        {
+            "title": "Epistle",
+            "caption": "Epistles" 
+            "_children": [
+              "Romans", "1 Corinthians", "2 Corinthians", "Galatians", 
+              "Ephesians", "Philippians", "Colossians", "1 Thessalonians", 
+              "2 Thessalonians", "1 Timothy", "2 Timothy", "Titus", 
+              "Philemon", "Hebrews", "James", "1 Peter", "2 Peter", "1 John", 
+              "2 John", "3 John", "Jude"
+            ]
+        },
+        {
+          "title": "Prophecy", 
+          "_children": ["Revelations"]
+        }
+      ]
+    }
+  ]
+}
