@@ -17,7 +17,7 @@ const removeStanzaPrefixes = (verses) => verses.map(
 const {inscriptions, verses} = extractInscriptions(require('./rvg.json').verses)
 
 module.exports = () => ({
-  title: 'La Biblia Reina Valera Gómez',
+  title: 'La Biblia Reina Valera',
   verses: removeStanzaPrefixes(verses),
   metadata: require('./rvg.json').metadata,
   language: require(`../../common/languages/es.json`),
